@@ -1,43 +1,53 @@
 #Pasos para calcular el áreaMultiplica el radio por sí mismo (eleva el radio al cuadrado: \(r \times r\)).Multiplica ese resultado por el valor de pi (\(\pi \approx 3.1416\)).Escribe la respuesta usando unidades cuadradas (como \(\text{cm}^{2}\) o \(\text{m}^{2}\)).
 
 class Circle:
-    radius = 0
-    
+    def __init__(self, radius):
+        self.radius = radius
+ 
     def get_area(self):
         area = 3.1416 * (self.radius ** 2)
-        print(f"The area of the circle with radius {self.radius} is: {area}")
-
-Circle1 = Circle()
-Circle1.radius = 5
-Circle1.get_area()
-
+        return area
+ 
+ 
+circle1 = Circle(5)
+print(f"The area of the circle with radius {circle1.radius} is: {circle1.get_area()}")
+ 
 #Segundo ejercicio: BUS
-
-class person:
-    name = ""
-    age = 0
-
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+ 
+ 
 class Bus:
-    max_passengers = 0
-
-    def add_passengers(self,number,person):
-        if self.max_passengers + number <= 50:
-            self.max_passengers += number
-            print(f"Added {number} passengers. Total passengers: {self.max_passengers}")
+    def __init__(self, max_passengers):
+        self.max_passengers = max_passengers   
+        self.passengers = []                   
+ 
+    def add_passengers(self, person):
+        if len(self.passengers) < self.max_passengers:
+            self.passengers.append(person)
+            print(f"Added {person.name}. Total passengers: {len(self.passengers)}")
         else:
-            print("Cannot add passengers. Maximum capacity reached.")
-    
-    def remove_passengers(self,number,person):
-        if self.max_passengers - number >= 0:
-            self.max_passengers -= number
-            print(f"Removed {number} passengers. Total passengers: {self.max_passengers}")
+            print("Cannot add passenger. Maximum capacity reached.")
+ 
+    def remove_passengers(self, person):
+        if person in self.passengers:
+            self.passengers.remove(person)
+            print(f"Removed {person.name}. Total passengers: {len(self.passengers)}")
         else:
-            print("Cannot remove passengers. Not enough passengers on the bus.")
-bus1 = Bus()
-bus1.add_passengers(30, person())
-bus1.add_passengers(25, person())
-bus1.remove_passengers(10, person())
+            print("Cannot remove passenger. That person is not on the bus.")
+ 
+ 
 
+passenger1 = Person("Ana", 20)
+passenger2 = Person("Luis", 25)
+ 
+bus1 = Bus(50)
+bus1.add_passengers(passenger1)
+bus1.add_passengers(passenger2)
+bus1.remove_passengers(passenger1)
+ 
 #Tercer ejercicio: Se encuentra en documento aparte debido a que es muy largo y no cabe en este archivo.
 
 #Cuarto ejercicio: 

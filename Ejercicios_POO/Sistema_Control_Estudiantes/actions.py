@@ -4,16 +4,16 @@ from student import Student
 
 section_format = r"^[0-9]{1,2}[a-zA-Z]$"
 name_format = r"^[a-zA-Z ]+$"
- 
- 
+
+
 def is_valid_name(name):
     """A valid name is not empty and contains only letters and single spaces."""
-    return bool(re.match(NAME_PATTERN, name.strip()))
+    return bool(re.match(name_format, name.strip()))
 
 
 def is_valid_section(section):
     """A valid section looks like '10A', '11B', etc: 1-2 digits + 1 letter."""
-    return bool(re.match(SECTION_PATTERN, section.strip()))
+    return bool(re.match(section_format, section.strip()))
 
 
 def student_exists(students_list, full_name, section):

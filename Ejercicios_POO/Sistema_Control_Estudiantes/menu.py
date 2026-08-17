@@ -50,5 +50,5 @@ def run_menu(students_list):
         elif choice == 8:
             data.import_students_from_csv(students_list)
         elif choice == 9:
-            print("\nGoodbye!")
+            print("\nNos vimos!!")
             break
