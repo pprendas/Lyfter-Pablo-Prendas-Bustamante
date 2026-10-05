@@ -1,40 +1,26 @@
 from abc import ABC, abstractmethod
 #primer ejercicio de los 4 pilares de OOP
-class BankAccount:
-    def __init__(self , balance):
-     self.balance = balance
+import math
+
+class Shape(ABC):
+    @abstractmethod
+    def calculate_area(self):
+        pass
+
+    @abstractmethod
+    def calculate_perimeter(self):
+        pass
 
 
-    def withdraw(self, amount):
-        if amount > self.balance:
-            print("Fondos insuficientes, no se puede realizar el retiro.")
-        else:
-            self.balance -= amount
-            print(f"Retiro {amount}. Nevo saldo es: {self.balance}")
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
 
-    def deposit(self, amount):
-        self.balance += amount
-        print(f"Depositado {amount}. New balance is {self.balance}")
+    def calculate_area(self):
+        return math.pi * self.radius ** 2
 
-
-
-
-
-
-
-class SavingsAccount(BankAccount):
-    def __init__(self, balance, min_balance):
-        super().__init__(balance)
-        self.min_balance = min_balance
-
-    
-    def withdraw(self, amount):
-        if self.balance - amount < self.min_balance:
-            raise ValueError("No se puede retirar, el saldo mínimo no se puede violar.")
-        else:
-            super().withdraw(amount)
-    
-
+    def calculate_perimeter(self):
+        return 2 * math.pi * self.radius
 #Segundo ejercicio de los 4 pilares de OOP
 class Shape(ABC):
     @abstractmethod
@@ -69,6 +55,10 @@ class Rectangle(Shape):
 class Square(Rectangle):
     def __init__(self, side):
         super().__init__(side, side)
+    
+c = Circle(5)
+print(c.calculate_area())       # 78.53981633974483
+print(c.calculate_perimeter())
 
     
 #Tercer ejercicio de los 4 pilares de OOP Fabrica de autos que comparte ensamblaje de autos y cada auto tiene su propio motor y chasis
